@@ -71,8 +71,10 @@ Five <- seq(from = 1, to = 10)
 Five
 
 #9
-Vec <- 1:100 
-
+Vec<- seq(1, 100)
+Vec
+FiltVec<- subset(Vec, !(Vec%% 3 == 0 | Vec%% 5 == 0 | Vec%% 7 == 0))
+FiltVec
 
 
 #10
@@ -128,4 +130,4 @@ print(paste("My name is",name, "and I am",age ,"years old."))
 print(R.version.string)
 
 #What is the output of the above code?
-#Initially if you run the code as it is it the first 3 line of code displays the same code provided but the last line results to the Version of the R that you are using. 
+#Initially if you run the code as it is it the first 3 line of code displays the same code provided but the last line results to the version of the R that you are using. 
