@@ -71,11 +71,7 @@ Five <- seq(from = 1, to = 10)
 Five
 
 #9
-Vec<- seq(1, 100)
-Vec
-FiltVec<- subset(Vec, !(Vec%% 3 == 0 | Vec%% 5 == 0 | Vec%% 7 == 0))
-FiltVec
-
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
 
 #10
 backwards <- seq(from = 100, to = 1)
