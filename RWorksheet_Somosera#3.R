@@ -85,4 +85,10 @@ matrs[,4]
 #g. Name the rows as isa, dalawa, tatlo and columns as uno, dos, tres, quatro
 #for the matrix that was created in b.‘. What is its R code and corresponding output?
 
+newmat <- matrs(1:12, nrow = 3, ncol = 4)
 
+# name the rows and columns
+rownames(matrs) <- c("isa", "dalawa", "tatlo")
+colnames(matrs) <- c("uno", "dos", "tres", "quatro")
+
+matrs
