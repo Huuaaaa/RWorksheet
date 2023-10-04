@@ -74,8 +74,15 @@ matrs [2]
 #d. What will be the R code if you want to display the column 3 and column 4 in row 1
 #and row 2? What is its output? 
 matrs
-col3<-matrs[c(7)]
-col4<-matrs[c(10)]
-both<- c(col3,col4)
-both
+matrs[c(1,2),c(3,4)]
+
+#e. What is the R code is you want to display only the columns in 2 and 3, row 3?
+matrs[3, 2:3]
+
+#f. What is the R code is you want to display only the columns 4? What is its output?  
+matrs[,4]
+
+#g. Name the rows as isa, dalawa, tatlo and columns as uno, dos, tres, quatro
+#for the matrix that was created in b.‘. What is its R code and corresponding output?
+
 
