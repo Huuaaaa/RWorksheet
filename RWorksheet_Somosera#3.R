@@ -87,8 +87,12 @@ matrs[,4]
 
 newmat <- matrs(1:12, nrow = 3, ncol = 4)
 
-# name the rows and columns
 rownames(matrs) <- c("isa", "dalawa", "tatlo")
 colnames(matrs) <- c("uno", "dos", "tres", "quatro")
 
 matrs
+
+#h.
+matr
+dim(matr) <- c(6, 2)
+matr
