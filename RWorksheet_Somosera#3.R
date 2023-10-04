@@ -59,4 +59,23 @@ names(df)
 
 
 #2
-matrix(data = c(1,2,3,4,5,6,7,8,9,10,11,12),3,4)
+#a.What will be the R code for the #2 question and its result?
+
+matr <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)
+matr
+
+#b. Multiply the matrix by two. What is its R code and its result?
+matrs <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)*2
+matrs
+
+#c. What is the content of row 2? What is its R code?
+matrs [2]
+
+#d. What will be the R code if you want to display the column 3 and column 4 in row 1
+#and row 2? What is its output? 
+matrs
+col3<-matrs[c(7)]
+col4<-matrs[c(10)]
+both<- c(col3,col4)
+both
+
