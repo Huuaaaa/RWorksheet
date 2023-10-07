@@ -90,38 +90,31 @@ data
 
 #8
 #a Create vectors for Power Ranking, Celebrity Name, and Pay
-Power_Ranking <- 1:25
-Celebrity_Name <- c(
-  "Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods",
-  "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos",
-  "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali",
-  "Paul McCartney", "George Lucas", "Elton John", "David Letterman",
-  "Phil Mickelson", "J.K. Rowling", "Brad Pitt", "Peter Jackson",
-  "Dr. Phil McGraw", "Jay Leno", "Celine Dion", "Kobe Bryant"
+CelebData <- data.frame (
+  PowerRanking = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25),
+  CelebrityName = c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant"),
+  Pay = c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
 )
-Pay <- c(
-  67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25,
-  39, 45, 32, 40, 31
-)
-
-celebrity_data <- data.frame(Power_Ranking, Celebrity_Name, Pay)
-celebrity_data
-
+CelebData
 #b
 
-celebrity_data$Power_Ranking[celebrity_data$Celebrity_Name == "J.K. Rowling"] <- 15
-celebrity_data$Pay[celebrity_data$Celebrity_Name == "J.K. Rowling"] <- 90
+RepNew <- replace(CelebData$PowerRanking, 19, 15)
+RepNew
+PayNew <- replace(CelebData$Pay, 19, 90)
+PayNew 
 
-celebrity_data
+NewCelebData <- data.frame (
+  PowerRanking = RepNew, CelebrityName, Pay = NewPay)
+NewCelebData
 
 #c
 install.packages("writexl")
 library(writexl)
-write_xlsx(Power_Ranking, path = "PowerRanking.xlsx")
-write.csv(Power_Ranking, file = "PowerRanking.csv", row.names = FALSE)
+write_xlsx(CelebData, path = "PowerRanking.xlsx")
+write.csv(CelebData, file = "PowerRanking.csv", row.names = FALSE)
 
 #d
-TntoTwnty <-Excel_Data[10:20, ]
+TntoTwnty <-CelebData[10:20, ]
 save(TntoTwnty, file = "Ranks.RData")
 TntoTwnty
 
@@ -133,8 +126,8 @@ TntoTwnty
 #a
 install.packages("readxl")
 library(readxl)
-Excel_Data <- read_excel("Worksheet#2/hotels-vienna.xlsx")
-Excel_Data
+ExcelData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
+ExcelData
 
 #b
 dimensions <- dim(Excel_Data)
@@ -159,9 +152,9 @@ tail(selected_columns)
 Veggies <- c("Tomato","Carrot","Potatoes","Cucumber","Eggplant","Bell Pepper","Squash","Cabbage","Radish","Mushroom")
 Veggies 
 
-AddVeg<- c("Kangkong","Ampalaya")
 
 #b
+AddVeg<- c("Kangkong","Ampalaya")
 LastVeg<-c(Veggies, AddVeg)
 LastVeg
 

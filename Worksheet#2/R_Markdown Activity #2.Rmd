@@ -4,6 +4,10 @@ output: html_document
 date: "2023-10-07"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ```{r num1a}
 seqA <- -5:5
 seqA
@@ -82,29 +86,91 @@ data
 ```
 
 ```{r num8a}
-Power_Ranking <- 1:25
-Celebrity_Name <- c(
-  "Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods",
-  "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos",
-  "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali",
-  "Paul McCartney", "George Lucas", "Elton John", "David Letterman",
-  "Phil Mickelson", "J.K. Rowling", "Brad Pitt", "Peter Jackson",
-  "Dr. Phil McGraw", "Jay Leno", "Celine Dion", "Kobe Bryant"
+CelebData <- data.frame (
+  PowerRanking = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25),
+  CelebrityName = c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant"),
+  Pay = c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
 )
-Pay <- c(
-  67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25,
-  39, 45, 32, 40, 31
-)
-
-celebrity_data <- data.frame(Power_Ranking, Celebrity_Name, Pay)
-celebrity_data
-
+CelebData
 ```
 
 ```{r num8b}
-celebrity_data$Power_Ranking[celebrity_data$Celebrity_Name == "J.K. Rowling"] <- 15
-celebrity_data$Pay[celebrity_data$Celebrity_Name == "J.K. Rowling"] <- 90
+RepNew <- replace(CelebData$PowerRanking, 19, 15)
+PayNew <- replace(CelebData$Pay, 19, 90)
 
-celebrity_data
+NewCelebData <- data.frame (
+  PowerRanking = RepNew, CelebData$CelebrityName, Pay = PayNew)
+NewCelebData
+
 ```
 
+```{r num8c}
+install.packages("writexl")
+library(writexl)
+write_xlsx(CelebData, path = "PowerRanking.xlsx")
+write.csv(CelebData, file = "PowerRanking.csv", row.names = FALSE)
+```
+
+```{r num8d}
+TntoTwnty <-CelebData[10:20, ]
+save(TntoTwnty, file = "Ranks.RData")
+TntoTwnty
+```
+
+```{r num9a}
+install.packages("readxl")
+library(readxl)
+ExcelData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
+ExcelData
+```
+
+```{r num9b}
+library(readxl)
+dimensions <- dim(Excel_Data)
+dimensions
+```
+
+
+```{r num9c}
+selected_columns <- Excel_Data[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+head(selected_columns, n = nrow(selected_columns))
+```
+
+```{r num9d}
+save(selected_columns, file = "new.RData")
+```
+
+```{r num9e}
+load("new.RData")
+head(selected_columns)
+tail(selected_columns)
+
+```
+
+```{r num10a}
+Veggies <- c("Tomato","Carrot","Potatoes","Cucumber","Eggplant","Bell Pepper","Squash","Cabbage","Radish","Mushroom")
+Veggies 
+
+```
+
+```{r num10b}
+AddVeg<- c("Kangkong","Ampalaya")
+LastVeg<-c(Veggies, AddVeg)
+LastVeg
+```
+
+```{r num10c}
+FourVeg<- c("Artichoke", "Beet", "Broccolli", "Sitaw")
+UpdateVeg <- c(LastVeg[1:5], FourVeg, LastVeg[6:length(LastVeg)])
+UpdateVeg
+
+length(UpdateVeg)
+```
+
+```{r num10d}
+Bye<- c(5, 10, 15)
+Final<-UpdateVeg[-Bye]
+Final
+
+length(Final)
+```
