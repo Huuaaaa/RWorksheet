@@ -2,32 +2,31 @@ LETTERS
 letters
 
 #a. You need to produce a vector that contains the first 11 letters
-LETTERS [1:11]
+FLet<- LETTERS [1:11]
+FLet
 
 #b. Produce a vector that contains the odd numbered letters.
-odd <-LETTERS [1,25,2]
-odd
-
+OddLet <- LETTERS[seq(1,25,2)]
+OddLet
 
 #c.Produce a vector that contains the vowels
-
-
-
+vwls <- c(letters[which(letters %in% c("a","e","i","o","u"))], 
+            LETTERS[which(LETTERS %in% c("A","E","I","O","U"))])
+vwls
 
 #d. Produce a vector that contains the last 5 lowercase letters.
-letters [1:5]
+lastfv<- tail(letters, 5)
+lastfv
 
 #e. Produce a vector that contains letters between 15 to 24 letters in lowercase.
-letters [15:24]
-
-
+Betweenletters<- letters[15:24]
+Betweenletters
 
 
 #2 Vector of Average Temperatures
 #a
 City <- c("Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island ,Davao City")
 City
-
 
 #b
 Temp <- c("42°C, 39°C, 34°C, 34°C, 30°C, 27°C")
@@ -48,15 +47,12 @@ df
 names(df) <- c("City", "Temperature")
 names(df)
 
+#e
+str(df)
+#The output displays a message "1 obs. of 2 variable:" and presents to show the city and temperature that was entered earlier.
 
-
-
-
-
-
-
-
-
+#f
+df[3:4,]
 
 #2
 #a.What will be the R code for the #2 question and its result?

@@ -11,6 +11,21 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r cars}
-LETTERS [1:11]
+```{r num1a, collapse=TRUE}
+FLet<- LETTERS [1:11]
+FLet
 ```
+```{r num1b, collapse=TRUE}
+OddLet <- LETTERS[seq(1,25,2)]
+OddLet
+```
+```{r num1c, collapse=TRUE}
+vwls <- c(letters[which(letters %in% c("a","e","i","o","u"))], 
+            LETTERS[which(LETTERS %in% c("A","E","I","O","U"))])
+vwls
+```
+
+```{r num1d, collapse=TRUE}
+letters [1:5]
+```
+
