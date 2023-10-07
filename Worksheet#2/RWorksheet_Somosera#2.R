@@ -115,9 +115,10 @@ celebrity_data$Pay[celebrity_data$Celebrity_Name == "J.K. Rowling"] <- 90
 celebrity_data
 
 #c
-write.csv(celebrity_data, file = "PowerRanking.csv", row.names = FALSE)
-Excel_Data <- read.csv("PowerRanking.csv")
-View(Excel_Data)
+install.packages("writexl")
+library(writexl)
+write_xlsx(Power_Ranking, path = "PowerRanking.xlsx")
+write.csv(Power_Ranking, file = "PowerRanking.csv", row.names = FALSE)
 
 #d
 TntoTwnty <-Excel_Data[10:20, ]
@@ -132,18 +133,25 @@ TntoTwnty
 #a
 install.packages("readxl")
 library(readxl)
-Excel_Vienna <- "hotels-vienna.xlsx"
-Excel_Data <- read_excel(Excel_Vienna)
-View(Excel_Data)
+Excel_Data <- read_excel("Worksheet#2/hotels-vienna.xlsx")
+Excel_Data
 
 #b
 dimensions <- dim(Excel_Data)
 dimensions
 
 #c
-View(Excel_Data)
-selected_columns <- Excel_Data[, c({"country","neighbourhood", "price", "stars", "accommodation_type", "ratings"})]
-View(selected_columns)
+selected_columns <- Excel_Data[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+head(selected_columns, n = nrow(selected_columns))
+
+#d
+save(selected_columns, file = "new.RData")
+
+#e
+load("new.RData")
+head(selected_columns)
+tail(selected_columns)
+
 
 
 #10
