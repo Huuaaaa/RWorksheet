@@ -1,0 +1,16 @@
+---
+title: "RWorksheet_Somosera#3a.Rmd"
+output:
+  pdf_document: default
+  html_document: default
+date: "2023-10-07"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+LETTERS [1:11]
+```
