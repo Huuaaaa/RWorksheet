@@ -54,41 +54,66 @@ str(df)
 #f
 df[3:4,]
 
-#2
+#2 MATRIX
 #a.What will be the R code for the #2 question and its result?
 
 matr <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)
 matr
 
 #b. Multiply the matrix by two. What is its R code and its result?
-matrs <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)*2
-matrs
+matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)*2
 
 #c. What is the content of row 2? What is its R code?
-matrs [2]
+matrix(c(1:8,11:14),ncol=4,nrow=3)[2,]
 
 #d. What will be the R code if you want to display the column 3 and column 4 in row 1
 #and row 2? What is its output? 
-matrs
-matrs[c(1,2),c(3,4)]
+matrix(c(1:8,11:14),ncol=4,nrow=3)[1:2,c(3,4)]
 
 #e. What is the R code is you want to display only the columns in 2 and 3, row 3?
-matrs[3, 2:3]
+matrix(c(1:8,11:14),ncol=4,nrow=3)[3,c(2,3)]
 
 #f. What is the R code is you want to display only the columns 4? What is its output?  
-matrs[,4]
+matrix(c(1:8,11:14),ncol=4,nrow=3)[,4]
 
 #g. Name the rows as isa, dalawa, tatlo and columns as uno, dos, tres, quatro
 #for the matrix that was created in b.‘. What is its R code and corresponding output?
 
-newmat <- matrs(1:12, nrow = 3, ncol = 4)
-
-rownames(matrs) <- c("isa", "dalawa", "tatlo")
-colnames(matrs) <- c("uno", "dos", "tres", "quatro")
-
-matrs
+newmat <- matrix(c(1:8,11:14)*2,ncol=4,nrow=3)
+rownames(newmat) <- c("isa","dalawa","tatlo")
+colnames(newmat) <- c("uno","dos","tres","quatro")
+newmat
 
 #h.
+dim(matr) <- c(6,2)
 matr
-dim(matr) <- c(6, 2)
-matr
+
+#3
+#a.
+arr <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+arr
+
+arry3D <- array(arr, dim = c(2, 4, 3))
+arry3D
+
+#b.
+dim(arry3D)
+#The array has three dimensions
+
+#c.
+dimnames(arry3D) <- list(c("a", "b"), LETTERS[1:4], c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
+arry3D
+
+#It's output would be the following:
+#, , 1st-Dimensional Array
+#A B C D
+#a 1 3 7 9
+#b 2 6 8 0
+#, , 2nd-Dimensional Array
+#A B C D
+#a 3 5 1 3
+#b 4 1 2 6
+#, , 3rd-Dimensional Array
+#A B C D
+#a 7 9 3 5
+#b 8 0 4 1

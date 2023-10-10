@@ -26,6 +26,95 @@ vwls
 ```
 
 ```{r num1d, collapse=TRUE}
-letters [1:5]
+lastfv<- tail(letters, 5)
+lastfv
 ```
+
+```{r num1e, collapse=TRUE}
+Betweenletters<- letters[15:24]
+Betweenletters
+```
+
+```{r num2a, collapse=TRUE}
+City <- c("Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island ,Davao City")
+City
+```
+
+```{r num2b, collapse=TRUE}
+Temp <- c("42°C, 39°C, 34°C, 34°C, 30°C, 27°C")
+Temp
+```
+
+```{r num2c, collapse=TRUE}
+df <- data.frame(City, Temp)
+df
+```
+
+```{r num2d, collapse=TRUE}
+names(df) <- c("City", "Temperature")
+names(df)
+```
+
+```{r num2e, collapse=TRUE}
+str(df)
+```
+
+```{r num2f, collapse=TRUE}
+df[3:4,]
+```
+
+```{r nummat2a, collapse=TRUE}
+matr <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)
+matr
+```
+
+```{r nummat2b, collapse=TRUE}
+matrix(c(1:8, 11:14), nrow = 3, ncol = 4, byrow = TRUE)*2
+```
+
+```{r nummat2c, collapse=TRUE}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[2,]
+```
+
+```{r nummat2d, collapse=TRUE}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[1:2,c(3,4)]
+```
+
+```{r nummat2e, collapse=TRUE}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[3,c(2,3)]
+```
+
+```{r nummat2f, collapse=TRUE}
+matrix(c(1:8,11:14),ncol=4,nrow=3)[,4]
+```
+
+```{r nummat2g, collapse=TRUE}
+newmat <- matrix(c(1:8,11:14)*2,ncol=4,nrow=3)
+rownames(newmat) <- c("isa","dalawa","tatlo")
+colnames(newmat) <- c("uno","dos","tres","quatro")
+newmat
+```
+
+```{r nummat2h, collapse=TRUE}
+dim(matr) <- c(6,2)
+matr
+```
+
+```{r num3a, collapse=TRUE}
+arr <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+arr
+
+arry3D <- array(arr, dim = c(2, 4, 3))
+arry3D
+```
+
+```{r num3b, collapse=TRUE}
+dim(arry3D)
+```
+
+```{r num3c, collapse=TRUE}
+dimnames(arry3D) <- list(c("a", "b"), LETTERS[1:4], c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
+arry3D
+```
+
 
