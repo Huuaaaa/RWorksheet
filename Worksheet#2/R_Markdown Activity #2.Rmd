@@ -1,8 +1,8 @@
 ---
 title: "Worksheet-2 in R"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 date: "2023-10-07"
 ---
 
@@ -120,10 +120,9 @@ TntoTwnty
 ```
 
 ```{r num9a}
-install.packages("readxl")
 library(readxl)
-ExcData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
-View(ExcData)
+ExcData <- read_excel("hotels-vienna.xlsx")
+ExcData
 ```
 
 ```{r num9b}
