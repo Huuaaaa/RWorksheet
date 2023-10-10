@@ -120,20 +120,20 @@ TntoTwnty
 ```
 
 ```{r num9a}
+install.packages("readxl")
 library(readxl)
-ExcelData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
-View(ExcelData)
+ExcData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
+View(ExcData)
 ```
 
 ```{r num9b}
-library(readxl)
-dimensions <- dim(Excel_Data)
+dimensions <- dim(ExcData)
 dimensions
 ```
 
 
 ```{r num9c}
-selected_columns <- Excel_Data[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+selected_columns <- ExcData[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
 head(selected_columns, n = nrow(selected_columns))
 ```
 
