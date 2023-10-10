@@ -126,15 +126,15 @@ TntoTwnty
 #a
 install.packages("readxl")
 library(readxl)
-ExcelData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
-ExcelData
+ExcData <- read_excel("Worksheet#2/hotels-vienna.xlsx")
+View(ExcData)
 
 #b
-dimensions <- dim(Excel_Data)
+dimensions <- dim(ExcData)
 dimensions
 
 #c
-selected_columns <- Excel_Data[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+selected_columns <- ExcData[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
 head(selected_columns, n = nrow(selected_columns))
 
 #d
