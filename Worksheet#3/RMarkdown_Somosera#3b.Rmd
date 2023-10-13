@@ -40,22 +40,22 @@ Sub1
 ```{r num1e, collapse=TRUE}
 Sub2 <- HouseData[c(3, 5), c(2, 4)]
 Sub2
-````
+```
 
 ```{r num1f, collapse=TRUE}
 types_houses <- HouseData$Types_of_houses
 types_houses
-````
+```
 
 ```{r num1g, collapse=TRUE}
 MaleFarmer <- subset(HouseData, Sex == 1 & Fathers_Occupation == 1)
 MaleFarmer
-````
+```
 
 ```{r num1h, collapse=TRUE}
 FemRespondent <- subset(HouseData, Sex == 2 & Siblings_at_school >= 5)
 FemRespondent
-````
+```
 
 ```{r num2, collapse=TRUE}
 df = data.frame(Ints=integer(),
@@ -68,7 +68,7 @@ stringsAsFactors=FALSE)
 print("Structure of the empty dataframe:")
 print(str(df))
 #The results shows that data frame has 0 observations and 5 variables
-````
+```
 
 ```{r num3a, collapse=TRUE}
 household_data <- data.frame (
@@ -84,39 +84,57 @@ write.csv(household_data, file = "HouseholdData.csv", row.names = FALSE)
 
 household_data<- read.csv("HouseholdData.csv")
 household_data
-````
+```
 
-```{r num2b, collapse=TRUE}
+```{r num3b, collapse=TRUE}
 household_data$Sex <- factor(household_data$Sex)
 household_data$Sex <- as.integer(factor(household_data$Sex, 
                                  levels = c("Male", "Female"),
                                     labels = c(1, 2)))
 household_data
-````
+```
 
-```{r num2c, collapse=TRUE}
+```{r num3c, collapse=TRUE}
 household_data$Types_of_houses <- factor(household_data$Types_of_houses)
 household_data$Types_of_houses <- as.integer(factor(household_data$Types_of_houses,
                                               levels = c("Wood", "Congrete", "Semi-Congrete"),
                                                     labels = c(1, 2, 3)))
 household_data
-````
+```
 
-```{r num2d, collapse=TRUE}
+```{r num3d, collapse=TRUE}
 household_data$Fathers_Occupation <- factor(household_data$Fathers_Occupation)
 household_data$Fathers_Occupation <- as.character(factor(household_data$Fathers_Occupation,
                                             
                                             levels = c(1, 2, 3),
                                             labels = c("Farmer", "Driver", "Others")))
 household_data
-````
+```
 
-```{r num2e, collapse=TRUE}
+```{r num3e, collapse=TRUE}
 FemDrv <- subset(household_data, Sex == 2 & Fathers_Occupation == "Driver")
 FemDrv
-````
+```
 
-```{r num2, collapse=TRUE}
+```{r num3f, collapse=TRUE}
 Sibling <- subset(household_data, Siblings_at_school >= 5)
 Sibling
-````
+```
+
+```{r num4, collapse=TRUE}
+#4
+
+#Figure 3 describes the multiple sentiments of tweets covering six individual days in July. 
+#Starting from the data on the leftmost part, on July 14, 2020, there were almost
+#2,500 negative tweets, around 1,500 neutral tweets, and around 1,800 positive
+#tweets. Next is on July 15, 2020. Over 4,000 tweets are negative, around 2,800 are
+#neutral, and an estimated 3,250 tweets were positive. Next is on the 17th of July
+#where there is an estimated value of 3,300 negative tweets, 1,800 neutral tweets,
+#and 2,400 positive tweets. July 18 shows around 3,300 negative tweets, 2,220 neutral
+#tweets, and 2,550 positive tweets. Data from July 20, shows the negative tweets
+#around 2,350, neutral tweets around 1,400, and positive tweets around 1,700. Lastly,
+#July 21 shows an estimated amount of 4,100 negative tweets, 2,800 neutral tweets,
+#and 3,400 positive tweets.
+
+```
+
