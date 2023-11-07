@@ -64,27 +64,17 @@ View(ExcelData)
 
 #6
 
+randomnum <- sample(1:50, 1)
 
-input_number <- as.numeric(readline("Enter a number: "))
+cat("The chosen number is:", randomnum, "\n")
 
-if (input_number < 1 || input_number > 50) {
-  cat("The number selected is beyond the range of 1 to 50\n")
-} else if (input_number == 20) {
+if (randomnum == 20) {
   cat("TRUE\n")
+} else if (randomnum < 1 || randomnum> 50) {
+  cat("The number selected is beyond the range of 1 to 50\n")
 } else {
-  cat("The chosen number is:", input_number, "\n")
+  cat(randomnum, "\n")
 }
 
+#7
 
-
-
-input_number <- as.numeric(readline("Enter a number: "))
-
-# Check if the input number is within the range of 1 to 50
-if (input_number < 1 || input_number > 50) {
-  cat("The number selected is beyond the range of 1 to 50\n")
-} else if (input_number == 20) {
-  cat("TRUE\n")
-} else {
-  cat("The chosen number is:", input_number, "\n")
-}
