@@ -1,0 +1,59 @@
+---
+title: "RMarkdown_Somosera#4b"
+output:
+  pdf_document: default
+  html_document: default
+date: "2023-11-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r num1}
+vecA <- c(1,2,3,4,5) 
+matA <- matrix(0, nrow = 5, ncol = 5) 
+
+for (i in 1:5){ 
+  for (j in 1:5){ 
+    matA[i,j] <- abs(vecA[i]-vecA[j]) #
+  }
+}
+
+print(matA) 
+
+```
+
+
+```{r num2}
+asterisks <- "" 
+for(i in 1:5){  
+asterisks <- paste(asterisks, "*") 
+
+cat(asterisks, "\n")
+}
+
+```
+
+```{r num3}
+# Get input from user
+n <- as.integer(readline(prompt="Enter the number of terms: "))
+
+# Initialize variables
+a <- 0
+b <- 1
+
+# Print Fibonacci sequence
+print(b)  # first term of the sequence
+
+repeat {
+  c <- a + b
+  if (c > 500) {  # exit loop if next term is greater than 500
+    break
+  }
+  print(c)
+  a <- b
+  b <- c
+}
+```
