@@ -77,4 +77,77 @@ if (randomnum == 20) {
 }
 
 #7
+minbills <- function(snackprice) {
+  billtype <- c(1000, 500, 200, 100, 50)
+  totalbill <- 0
+  
+  for (bill in billtype) {
+    billpaid <- snackprice %/% bill
+    snackprice <- snackprice %% bill
+    total <- totalbill + billpaid
+  }
+  
+  cat("Minimum number of bills needed to purchase the snack:", total, "\n")
+}
 
+snackprice <- 1350
+minbills(snackprice)
+
+
+#8
+
+#a.
+students <- data.frame(
+  Name = c("Annie" , "Thea", "Steve", "Hanna"),
+  Grade1 = c(85,65,75,95),
+  Grade2 = c(65,75,55,75),
+  Grade3 = c(85,90,80,100),
+  Grade4 = c(100,90,85,90)
+)
+students
+
+#b.
+
+students$Average <- (students$Grade1 + students$Grade2 + students$Grade3 + students$Grade4) / 4
+
+for (i in 1:nrow(students)) {
+  if (students$Average[i] > 90) {
+    cat(students$Name[i], "'s average grade this semester is", students$Average[i], "\n")
+  }
+}
+
+#c
+AvTest1 <- sum(students$Grade1) / nrow(students)
+AvTest2 <- sum(students$Grade2) / nrow(students)
+AvTest3 <- sum(students$Grade3) / nrow(students)
+AvTest4 <- sum(students$Grade4) / nrow(students)
+
+if (AvTest1 < 80) {
+  cat("The 1st test was difficult.\n")
+}
+if (AvTest2 < 80) {
+  cat("The 2nd test was difficult.\n")
+}
+if (AvTest3 < 80) {
+  cat("The 3rd test was difficult.\n")
+}
+if (AvTest4 < 80) {
+  cat("The 4th test was difficult.\n")
+}
+
+#d.
+for (i in 1:nrow(students)) {
+  highest_grade <- students$Grade1[i]
+  if (students$Grade2[i] > highest_grade) {
+    highest_grade <- students$Grade2[i]
+  }
+  if (students$Grade3[i] > highest_grade) {
+    highest_grade <- students$Grade3[i]
+  }
+  if (students$Grade4[i] > highest_grade) {
+    highest_grade <- students$Grade4[i]
+  }
+  if (highest_grade > 90) {
+    cat(students$Name[i], "'s highest grade this semester is", highest_grade, "\n")
+  }
+}

@@ -1,6 +1,8 @@
 ---
 title: "RMarkdown_Somosera#4"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 date: "2023-10-25"
 ---
 
@@ -8,22 +10,178 @@ date: "2023-10-25"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r num1a}
+HouseholdData <- data.frame(
+  ShoeSize = c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0 , 7.5 ,10.5, 8.5, 12.0, 10.5,
+               13.0 ,11.5, 8.5, 5.0, 10.0, 6.5, 7.5, 8.5, 10.5, 8.5, 10.5, 11.0, 9.0, 13.0),
+  Height = c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0,
+             77.0, 72.0, 59.0, 62.0, 72.0, 66.0, 64.0, 67.0, 73.0, 69.0, 72.0, 70.0, 69.0, 70.0),
+  Gender = c("F","F","F","F","M","F","F","F","M","F","M","F","M","M",
+             "M","M","F","F","M","F","F","M","M","F","M","M","M","M")
+)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+#a. Describe the data
+#The data frame contains information on individuals' shoe sizes, heights, and genders.
 
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
+```{r num1b}
+#b.Subsets for Male and Female
+SubM <- HouseholdData[HouseholdData$Gender == "M", c("ShoeSize", "Height")]
 
-You can also embed plots, for example:
+SubF <- HouseholdData[HouseholdData$Gender == "F", c("ShoeSize", "Height")]
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+SubM
+
+SubF
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r num1c}
+#c. Mean of Height and Shoe Sizes
+MeanSS<- mean(HouseholdData$ShoeSize)
+MeanH<- mean(HouseholdData$Height)
+
+MeanSS
+
+MeanH
+```
+
+
+```{r num1d}
+#d. Is there a relationship between shoe size and height? Why?
+#Yes, there is a relationship between the shoe size and height since it can be 
+#observed that taller people often have a larger shoe sizes.
+```
+
+```{r num2}
+months_vector <- c("March","April","January","November","January",
+"September","October","September","November","August",
+"January","November","November","February","May","August",
+"July","December","August","August","September","November","February", "April")
+
+factor_months_vector<- factor(months_vector)
+print(factor_months_vector)
+```
+
+```{r num3}
+summary(months_vector)
+summary(factor_months_vector)
+
+#The first summary provided the information about the  length, class, and mode. 
+#It shows that the vector consists of 24 character elements.
+#On the other hand, the second summary provided the count on how many times each month appears
+#in the original data. Overall, both summary are useful as they provided the length of the data as well as how many elements it contained for it month.
+```
+
+```{r num4}
+Direction <- c("East", "West", "North")
+Frequency <- c(1, 4, 3)
+factor_data<-c(Direction, Frequency)
+new_order_data <- factor(factor_data,levels = c("East","West","North"))
+print(new_order_data)
+
+```
+
+```{r num5a}
+#a. Import the excel file into the Environment Pane using read.table() function.
+ExcelData<- read.table("/cloud/project/Worksheet#4/import_march.csv", header = TRUE, sep = ",")
+```
+
+```{r num6}
+
+randomnum <- sample(1:50, 1)
+
+cat("The chosen number is:", randomnum, "\n")
+
+if (randomnum == 20) {
+  cat("TRUE\n")
+} else if (randomnum < 1 || randomnum> 50) {
+  cat("The number selected is beyond the range of 1 to 50\n")
+} else {
+  cat(randomnum, "\n")
+}
+```
+
+```{r num7}
+minbills <- function(snackprice) {
+  billtype <- c(1000, 500, 200, 100, 50)
+  totalbill <- 0
+  
+  for (bill in billtype) {
+    billpaid <- snackprice %/% bill
+    snackprice <- snackprice %% bill
+    total <- totalbill + billpaid
+  }
+  
+  cat("Minimum number of bills needed to purchase the snack:", total, "\n")
+}
+
+snackprice <- 1350
+minbills(snackprice)
+```
+
+``` {r num8a}
+#8.
+#a.
+students <- data.frame(
+  Name = c("Annie" , "Thea", "Steve", "Hanna"),
+  Grade1 = c(85,65,75,95),
+  Grade2 = c(65,75,55,75),
+  Grade3 = c(85,90,80,100),
+  Grade4 = c(100,90,85,90)
+)
+students
+```
+
+``` {r num8b}
+#b.
+
+students$Average <- (students$Grade1 + students$Grade2 + students$Grade3 + students$Grade4) / 4
+
+for (i in 1:nrow(students)) {
+  if (students$Average[i] > 90) {
+    cat(students$Name[i], "'s average grade this semester is", students$Average[i], "\n")
+  }
+}
+```
+
+``` {r num8c}
+#c
+AvTest1 <- sum(students$Grade1) / nrow(students)
+AvTest2 <- sum(students$Grade2) / nrow(students)
+AvTest3 <- sum(students$Grade3) / nrow(students)
+AvTest4 <- sum(students$Grade4) / nrow(students)
+
+if (AvTest1 < 80) {
+  cat("The 1st test was difficult.\n")
+}
+if (AvTest2 < 80) {
+  cat("The 2nd test was difficult.\n")
+}
+if (AvTest3 < 80) {
+  cat("The 3rd test was difficult.\n")
+}
+if (AvTest4 < 80) {
+  cat("The 4th test was difficult.\n")
+}
+```
+
+``` {r num8d}
+#d.
+for (i in 1:nrow(students)) {
+  highest_grade <- students$Grade1[i]
+  if (students$Grade2[i] > highest_grade) {
+    highest_grade <- students$Grade2[i]
+  }
+  if (students$Grade3[i] > highest_grade) {
+    highest_grade <- students$Grade3[i]
+  }
+  if (students$Grade4[i] > highest_grade) {
+    highest_grade <- students$Grade4[i]
+  }
+  if (highest_grade > 90) {
+    cat(students$Name[i], "'s highest grade this semester is", highest_grade, "\n")
+  }
+}
+```
