@@ -38,8 +38,7 @@ repeat {
 }
 
 #4
-setwd("Worksheet#4/RWorksheet_Somosera#4.R")
-my_data <- read.csv("data/HouseholdData.csv")
-
 #a. What is the R script for importing an excel or a csv file? Display the first 6 rows of
 #the dataset? Show your codes and its result
+HouseholdData
+head(HouseholdData)

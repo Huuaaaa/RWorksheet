@@ -37,19 +37,17 @@ cat(asterisks, "\n")
 ```
 
 ```{r num3}
-# Get input from user
+
 n <- as.integer(readline(prompt="Enter the number of terms: "))
 
-# Initialize variables
 a <- 0
 b <- 1
 
-# Print Fibonacci sequence
-print(b)  # first term of the sequence
+print(b)
 
 repeat {
   c <- a + b
-  if (c > 500) {  # exit loop if next term is greater than 500
+  if (c > 500) {
     break
   }
   print(c)
@@ -57,3 +55,97 @@ repeat {
   b <- c
 }
 ```
+
+
+```{r num4}
+#a
+library(readr)
+HouseholdData <- read_csv("/cloud/project/Worksheet#4/Worksheet#4b/HouseholdData.csv")
+print(HouseholdData)
+
+head(HouseholdData)
+
+#b
+MaleSub<- subset(HouseholdData, Gender == "Male")
+FemSub<- subset(HouseholdData, Gender =="Female")
+
+print("Male Subset:")
+print(MaleSub)
+
+print("Female Subset:")
+print(FemSub)
+
+nrow(MaleSub)
+nrow(FemSub)
+
+#c
+GraphMF<- table(HouseholdData$Gender)
+barplot(GraphMF,
+        main = "Number of Males and Females",
+        xlab = "Gender",
+        ylab = "Count",
+        col = c("dodgerblue4", "hotpink4"), 
+        legend.text = c("Male", "Female"),
+        beside = TRUE
+)
+
+legend("topright", legend = c("Male", "Female"), fill = c("dodgerblue4", "hotpink4"))
+```
+
+```{r num5}
+Expenses <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
+
+pie(Expenses,
+    labels = paste(names(Expenses), "\n", sprintf("%.1f%%", prop.table(Expenses) * 100)),
+    col = c("slateblue", "violetred4", "violetred", "magenta4"),  
+    main = "Monthly Expenses of the Dela Cruz Family"
+)
+```
+
+```{r num6}
+#a
+data("iris")
+str(iris)
+
+#The iris dataset has 150 observations and 5 variables.
+#These variables are the Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
+
+#b
+MeanIris<- colMeans(iris[, c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")])
+print(MeanIris)
+
+#c
+Spec <- table(iris$Species)
+
+clors <- c("midnightblue", "mediumvioletred", "mediumblue")
+
+pie(Spec,
+    labels = paste(names(Spec), "\n", sprintf("%.1f%%", prop.table(Spec) * 100)),
+    col = clors,
+    main = "Species Distribution",
+    cex.main = 1.5, 
+    cex = 0.8      
+)
+
+#d
+SetosaSub <- subset(iris, Species == "setosa")
+VersiSub <- subset(iris, Species == "versicolor")
+VirgiSub <- subset(iris, Species == "virginica")
+
+# Display the last six rows of each species
+cat("Last six rows of Setosa:")
+print(tail(SetosaSub))
+
+cat("Last six rows of Versicolor:")
+print(tail(VersiSub))
+
+cat("Last six rows of Virginica:")
+print(tail(VirgiSub))
+
+
+#e
+
+
+```
+
+
