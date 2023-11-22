@@ -145,7 +145,39 @@ print(tail(VirgiSub))
 
 #e
 
+data(iris)
 
+iris$Species <- as.factor(iris$Species)
+
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     pch = as.integer(iris$Species), 
+     col = iris$Species, 
+     main = "Iris Dataset",
+     sub = "Sepal width and length",
+     xlab = "Sepal Length",
+     ylab = "Sepal Width"
+)
+
+#f
+#The scatterplot shows similarities between the sepal width and length ranging from 5.5 to 7.0
 ```
 
+```{r num7}
+library(readxl)
+alexa_file <- read_excel("/cloud/project/Worksheet#4/Worksheet#4b/alexa_file.xlsx")
+alexa_file
+
+#a. Rename the white and black variants by using gsub() function.
+alexa_file$variation <- gsub("Black", "Black Dot", alexa_file$variation)
+alexa_file$variation <- gsub("Black", "Black Plus", alexa_file$variation)
+alexa_file$variation <- gsub("Black", "Black Snow", alexa_file$variation)
+alexa_file$variation <- gsub("Black", "Black Spot", alexa_file$variation)
+alexa_file$variation <- gsub("White", "White Dot", alexa_file$variation)
+alexa_file$variation <- gsub("White", "White Plus", alexa_file$variation)
+alexa_file$variation <- gsub("White", "White Snow", alexa_file$variation)
+alexa_file$variation <- gsub("White", "White Spot", alexa_file$variation)
+alexa_file
+
+library(knitr)
+```
 
