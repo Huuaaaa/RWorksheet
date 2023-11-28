@@ -3,27 +3,78 @@
 #On your file pane select "Upload", "Choose File" then find your file to upload and select "OK"  
 library(readr)
 mpg <- read_csv("Worksheet#4/Worksheet#4c/mpg.csv")
-View(mpg)
+str(mpg)
 #b. Which variables from mpg dataset are categorical?
-#The variables that are categorical from the mpg dataset are manufacturer, model, year, trans, fl, and class
+#The variables that are categorical from the mpg dataset are manufacturer, model, trans(transmission) , drv (type of drive),
+#fl (fuel type), and class
 
 #c. Which are continuous variables?
-#The variables that are continuous are displ, cty, hwy
+#The variables that are continuous are displ (engine displacement), year, cyl(number of cylinders), cty (city miles per gallon),
+#and hwy (highway miles per gallon).
 
 #2. Which manufacturer has the most models in this data set? Which model has the most variations? Show your answer
-library(ggplot2)
-MostModel<-read.csv("Worksheet#4/Worksheet#4c/mpg.csv")
+install.packages("dplyr")
+library(dplyr)
 
-model_count <- table(MostModel$manufacturer, MostModel$model)
-max_models <- max(unlist(model_count))
-max_manufacturer <- names(model_count)[unlist(model_count) == max_models]
-variation_count <- table(MostModel$model, MostModel$cyl)
+ManuMost<- mpg %>%
+group_by(manufacturer) %>%
+summarize(num_models = n_distinct(model)) %>%
+arrange(desc(num_models)) %>%
+slice(1) %>%
+pull(manufacturer)
+cat("Manufacturer with the most models:", ManuMost, "\n")
 
-max_variations <- max(unlist(variation_count))
-max_model <- names(variation_count)[unlist(variation_count) == max_variations]
+model_most_variations <- mpg %>%
+group_by(model) %>%
+summarize(num_variations = n_distinct(trans)) %>%
+arrange(desc(num_variations)) %>%
+slice(1) %>%
+pull(model)
+cat("Model with the most variations:", model_most_variations, "\n")
 
-cat("The manufacturer with the most models is:", max_manufacturer)
-cat("The model with the most variations is:", max_model)
+
+# Manufacturer with the most models is toyota while the model with the most variations is a4
+
+#2a.
+UniqueMod<- mpg %>%
+group_by(manufacturer) %>%
+summarize(unique_models = n_distinct(model))
+print(UniqueMod)
+
+
+#2b
+barplot(UniqueMod$unique_models, names.arg = UniqueMod$manufacturer,
+        main = "Unique Models by Manufacturer ",
+        xlab = "Manufacturer",
+        ylab = "Unique Models",
+        col = "thistle4",
+        border = "black",
+        las = 2
+)
+
+barplot(table(mpg$model), main = "Number of Variations by Model",
+        xlab = "Model",
+        ylab = "Number of Variations",
+        col = "plum3",
+        border = "black",
+        las = 2
+)
+
+#Same dataset will be used. You are going to show the relationship of the modeland the manufacturer
+relation <- table(mpg$manufacturer, mpg$model)
+
+print(relation)
+
+#a. What does ggplot(mpg, aes(model, manufacturer)) + geom_point() show?
+ggplot(mpg, aes(x = model, y = manufacturer)) +
+  geom_point() +
+  labs(title = "Relationship between Model and Manufacturer",
+       x = "Model",
+       y = "Manufacturer") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+#It shows the relationship between model and manufacturer by scatter plots.
+
 
 
 
