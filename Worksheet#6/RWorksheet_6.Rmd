@@ -45,3 +45,66 @@ print(ordered_fertilizer)
 
 ```
 
+```{r num3}
+#3 You can use a factor to represent the levels undertaken by 10 subjects.
+
+ExrLvl <- c("l", "n", "n", "i", "l", "l", "n", "n", "i", "l")
+
+ExrFact <- factor(ExrLvl, levels = c("n", "l", "i"), labels = c("none", "light", "intense"))
+
+print(ExrFact)
+```
+
+```{r num4}
+state <- c("tas", "sa", "qld", "nsw", "nsw", "nt", "wa", "wa", "qld",
+           "vic", "nsw", "vic", "qld", "qld", "sa", "tas", "sa", "nt",
+           "wa", "vic", "qld", "nsw", "nsw", "wa", "sa", "act", "nsw",
+           "vic", "vic", "act")
+#a. 
+StateFact<- factor(state)
+print(StateFact)
+#The results provide the different "Levels" provided in the vector.
+```
+
+```{r num5}
+incomes <- c(60, 49, 40, 61, 64, 60, 59, 54,
+             62, 69, 70, 42, 56, 61, 61, 61, 58, 51, 48,
+             65, 49, 49, 41, 48, 52, 46, 59, 46, 58, 43)
+#a. Sample Mean
+
+incmeans <- tapply(incomes, StateFact, mean)
+print(incmeans)
+
+#b. The results show the mean for each state provided 
+```
+
+```{r num6}
+#stdError <- function(x) sqrt(var(x)/length(x))
+#incster <- tapply(incomes, statef, stdError)
+
+#a. The standard error is that the object 'statef' is not found as the vector was named as 'state'.
+```
+```{r num7}
+install.packages("titanic")
+library(titanic)
+data("titanic_train")
+titanic_data <- titanic_train
+
+
+Survived <- subset(titanic_data, Survived == 1)
+NotSurvived <- subset(titanic_data, Survived == 0)
+
+print(Survived)
+print(NotSurvived)
+```
+
+```{r num8}
+install.packages("readr")
+library(readr)
+breastcancer_wisconsin <- read_csv("/cloud/project/Worksheet#6/breastcancer_wisconsin.csv")
+print(breastcancer_wisconsin)
+
+#a. The dataset is all about the recorded data of people that have breastcancer and its characteristics.
+
+
+```
