@@ -101,10 +101,57 @@ print(NotSurvived)
 ```{r num8}
 install.packages("readr")
 library(readr)
-breastcancer_wisconsin <- read_csv("/cloud/project/Worksheet#6/breastcancer_wisconsin.csv")
-print(breastcancer_wisconsin)
+BCancer <- read_csv("/cloud/project/Worksheet#6/breastcancer_wisconsin.csv")
+print(BCancer)
 
-#a. The dataset is all about the recorded data of people that have breastcancer and its characteristics.
+#a. The dataset is all about the recorded data about breastcancer. It includes the ID which I assume for each 
+#individual and its characteristics such as clump thickness, size and shape uniformity.
 
+#b1
+StdrdErr<- sd(BCancer$clump_thickness) / sqrt(length(BCancer$clump_thickness))
+StdrdErr
+
+#b2
+MeanAd<- mean(BCancer$marginal_adhesion)
+SDAd <- sd(BCancer$marginal_adhesion)
+CoAd <- (SDAd / MeanAd) * 100
+CoAd
+
+#b3
+NullVal <- sum(is.na(BCancer$bare_nucleoli))
+NullVal
+
+#b4
+MeanBlCh <- mean(BCancer$bland_chromatin, na.rm = TRUE)
+SDBlCh <- sd(BCancer$bland_chromatin, na.rm = TRUE)
+MeanBlCh
+SDBlCh
+
+#b5
+Conf<- t.test(BCancer$shape_uniformity, na.rm = TRUE)
+ConInter<- Conf$conf.int
+ConInter
+
+#c
+NumAtt<- ncol(BCancer)
+NumAtt
+#There are 11 attributes
+
+#d
+Percent <- mean(BCancer$class == 4) * 100
+Percent
+#There are 34% of respondents that are malignant.
+```
+
+```{r num9}
+#9
+library(readxl)
+abalone <- read_excel("/cloud/project/Worksheet#6/abalone.xls")
+print(abalone)
+install.packages("AppliedPredictiveModeling")
+library("AppliedPredictiveModeling")
+print(abalone)
+head(abalone)
+summary(abalone)
 
 ```
