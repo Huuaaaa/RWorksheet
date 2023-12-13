@@ -1,10 +1,10 @@
 #1 
 
 student <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-pre_test <- c(55, 54, 47, 57, 51, 61, 57, 54, 63, 58)
-post_test <- c(61, 60, 56, 63, 56, 63, 59, 56, 62, 61)
+PreTest <- c(55, 54, 47, 57, 51, 61, 57, 54, 63, 58)
+PostTest <- c(61, 60, 56, 63, 56, 63, 59, 56, 62, 61)
 
-StudentScore <- data.frame(Student = student, Pre_Test = pre_test, Post_Test = post_test)
+StudentScore <- data.frame(Student = student, Pre_Test = PreTest, Post_Test = PostTest)
 print(StudentScore)
 
 #a
@@ -87,17 +87,33 @@ print(NotSurvived)
 #8
 install.packages("readr")
 library(readr)
-breastcancer_wisconsin <- read_csv("Worksheet#6/breastcancer_wisconsin.csv")
-View(breastcancer_wisconsin)
+BCancer <- read_csv("Worksheet#6/breastcancer_wisconsin.csv")
+View(BCancer)
 
-#a. The dataset is all about the recorded data of people that have breastcancer and its characteristics.
+#a. The dataset is all about the recorded data about breastcancer. It includes the ID which I assume for each 
+#individual and its characteristics such as clump thickness, size and shape uniformity.
 
+#b1
+StdrdErr<- sd(BCancer$clump_thickness) / sqrt(length(BCancer$clump_thickness))
+StdrdErr
 
+#b2
+MeanAd<- mean(BCancer$marginal_adhesion)
+SDAd <- sd(BCancer$marginal_adhesion)
+CoAd <- (SDAd / MeanAd) * 100
+CoAd
 
+#b3
+NullVal <- sum(is.na(BCancer$bare_nucleoli))
+NullVal
+
+#b4
 
 #9
+library(readxl)
+abalone <- read_excel("Worksheet#6/abalone.xls")
 install.packages("AppliedPredictiveModeling")
 library("AppliedPredictiveModeling")
-view(abalone)
+View(abalone)
 head(abalone)
 summary(abalone)
