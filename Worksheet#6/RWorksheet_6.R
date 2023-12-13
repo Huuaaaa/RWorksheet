@@ -108,7 +108,25 @@ NullVal <- sum(is.na(BCancer$bare_nucleoli))
 NullVal
 
 #b4
+MeanBlCh <- mean(BCancer$bland_chromatin, na.rm = TRUE)
+SDBlCh <- sd(BCancer$bland_chromatin, na.rm = TRUE)
+MeanBlCh
+SDBlCh
 
+#b5
+Conf<- t.test(BCancer$shape_uniformity, na.rm = TRUE)
+ConInter<- Conf$conf.int
+ConInter
+
+#c
+NumAtt<- ncol(BCancer)
+NumAtt
+#There are 11 attributes
+
+#d
+Percent <- mean(BCancer$class == 4) * 100
+Percent
+#There are 34% of respondents that are malignant.
 #9
 library(readxl)
 abalone <- read_excel("Worksheet#6/abalone.xls")
